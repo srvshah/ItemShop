@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <div class="card-container">
+                <mat-card class="card">
+                    <mat-card-header>
+                      <mat-card-title>Add Product</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <form [formGroup]="prodCreateForm" 
+                            (ngSubmit)="create()">
+                            <mat-form-field class="full-width">
+                                <mat-label>Name</mat-label>
+                                <input 
+                                    matInput 
+                                    formControlName="name"
+                                   >
+                            </mat-form-field>
+                        
+                            <mat-form-field class="full-width">
+                                <mat-label>Price</mat-label>
+                                <input 
+                                    matInput 
+                                    type="number"
+                                    formControlName="price"
+                                    >
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width">
+                                <mat-label>Image Url</mat-label>
+                                <input 
+                                    matInput 
+                                    formControlName="imageUrl"
+                                    >
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput formControlName="description"></textarea>
+                            </mat-form-field>
+                            
+                            
+                            <button 
+                                mat-raised-button color="primary"
+                                [disabled]="!prodCreateForm.valid || loading"
+                                >
+                                    <mat-spinner
+                                        class="float-left mr-2"
+                                        *ngIf="loading"
+                                        [diameter]="25"
+                                    ></mat-spinner>
+                                    Add
+                               
+                            </button>
+                            
+                      </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+

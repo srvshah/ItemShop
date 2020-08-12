@@ -36,7 +36,6 @@ import { AuthGuardService } from './service/auth-guard.service';
     CoreModule,
     HttpClientModule
   ],
-  
   providers: [
     AuthService,
     AuthGuardService
