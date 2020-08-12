@@ -11,9 +11,7 @@ import { ReactiveFormsModule  } from '@angular/forms'
 import {AuthService} from './service/auth.service'
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CustomerComponent } from './customer/customer.component';
 import {CoreModule} from './core/core.module'
 import { AuthGuardService } from './service/auth-guard.service';
 
@@ -22,9 +20,7 @@ import { AuthGuardService } from './service/auth-guard.service';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProductComponent,
     DashboardComponent,
-    CustomerComponent
   ],
   imports: [
     CommonModule,

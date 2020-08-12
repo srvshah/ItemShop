@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CustomerComponent } from './customer/customer.component';
 import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
@@ -19,7 +17,11 @@ const routes: Routes = [
   
   },
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
-  {path: 'customer', component: CustomerComponent, canActivate: [AuthGuardService]},
+  {
+    path: 'customer', 
+    loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule),
+    canActivate: [AuthGuardService]
+  },
 ];
 
 @NgModule({

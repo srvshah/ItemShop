@@ -16,3 +16,10 @@ mat-sidenav {
 .card-container{
     margin-top: 20%;
 }
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+table{
+    width: 100%;
+}
