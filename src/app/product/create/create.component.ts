@@ -4,6 +4,7 @@ import {ProductModel} from './../models/product'
 import { ProductModule } from '../product.module';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -16,7 +17,8 @@ export class CreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) { 
     this.prodCreateForm = this.fb.group({
       'name': [this.product.name, [Validators.required]],
@@ -34,8 +36,8 @@ export class CreateComponent implements OnInit {
     this.productService.createProduct(this.prodCreateForm.value).subscribe(res=> {
       this.router.navigate(['/product'])
       this.loading = false
+      this.toastrService.success('Product Created')
     }, err => {
-      console.log(err)
       this.loading = false
     })
   }

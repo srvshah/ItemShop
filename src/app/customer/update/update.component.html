@@ -1,7 +1,5 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-4">
-            <div class="card-container">
+<div class="container-fluid mt-5">
+   
                 <mat-card class="card">
                     <mat-card-header>
                       <mat-card-title>Update Customer</mat-card-title>
@@ -34,17 +32,16 @@
                             </mat-form-field>
 
                             <div class="full-width">
-                                <mat-label>Gender</mat-label>
+                                <mat-label>Gender</mat-label><br><br>
                                 <mat-radio-group aria-label="Select an option" formControlName="gender">
-                                    <mat-radio-button value="0">Unknown</mat-radio-button>
-                                    <mat-radio-button value="1">Male</mat-radio-button>
-                                    <mat-radio-button value="2">Female</mat-radio-button>
+                                    <mat-radio-button value="0">Unknown</mat-radio-button><br>
+                                    <mat-radio-button value="1">Male</mat-radio-button><br>
+                                    <mat-radio-button value="2">Female</mat-radio-button><br>
                                 </mat-radio-group>
                             </div>
-                              
-
-                            <button mat-raised-button routerLink="/customer" class="mr-3">
-                                cancel
+<br>
+                            <button mat-button routerLink="/customer" class="mr-3">
+                                Cancel
                             </button>
                             
                             <button 
@@ -64,7 +61,5 @@
                       </form>
                     </mat-card-content>
                 </mat-card>
-            </div>
-        </div>
-    </div>
+           
 </div>

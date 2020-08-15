@@ -34,4 +34,10 @@ export class ProductService {
   deleteProduct(id){
     return this.http.delete(this.productUrl + '/' + id)
   }
+
+  out: number
+  getProductCount(){
+    this.listProduct().subscribe(res => this.out = res.length)
+    return this.out
+  }
 }

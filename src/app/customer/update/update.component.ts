@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerModel } from '../models/customer';
 import { map, mergeMap } from 'rxjs/operators'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update',
@@ -14,12 +15,12 @@ export class UpdateComponent implements OnInit {
   custUpdateForm: FormGroup
   customer: CustomerModel = new CustomerModel
   loading = false
-  genderValue: string
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) { 
     this.custUpdateForm = this.fb.group({
       'name': '',
@@ -41,21 +42,11 @@ export class UpdateComponent implements OnInit {
       mergeMap(id => this.customerService.getCustomer(id))
     ).subscribe(res => {
       this.customer = res
-
-      if(this.customer.gender == "Unknown"){
-        this.genderValue = "0"
-      }
-      else if( this.customer.gender == "Male"){
-        this.genderValue = "1"
-      }
-      else if(this.customer.gender == "Female"){
-        this.genderValue = "2"
-      }
       this.custUpdateForm = this.fb.group({
         'name': [this.customer.name, [Validators.required]],
         'address': [this.customer.address, [Validators.required]],
         'phone': [this.customer.phone],
-        'gender': [this.genderValue, [Validators.required]]
+        'gender': [this.customer.gender, [Validators.required]]
       })
     })
   }
@@ -65,6 +56,7 @@ export class UpdateComponent implements OnInit {
     this.customerService.updateCustomer(id, this.custUpdateForm.value).subscribe(res=>{
       this.router.navigate(['/customer'])
       this.loading = false
+      this.toastrService.success('Customer Updated')
     }, err => {
       this.loading = false
     })

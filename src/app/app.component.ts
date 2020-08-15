@@ -25,6 +25,7 @@ export class AppComponent implements OnInit   {
 
   logout(){
     this.authService.removeToken()
+    this.authService.removeUsername()
     location.reload()
     this.router.navigate([''])
   }

@@ -13,13 +13,21 @@ const routes: Routes = [
     path: 'product', 
     loadChildren: () => import('./product/product.module').then(m => m.ProductModule),
     canActivate: [AuthGuardService]
-    
-  
   },
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   {
     path: 'customer', 
     loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule),
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'transaction', 
+    loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule),
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'invoice', 
+    loadChildren: () => import('./invoice/invoice.module').then(m => m.InvoiceModule),
     canActivate: [AuthGuardService]
   },
 ];

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomerModel } from '../models/customer';
 import { CustomerService } from '../customer.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create',
@@ -16,7 +17,8 @@ export class CreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private customerService: CustomerService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) { 
     this.custCreateForm = this.fb.group({
       'name': [this.customer.name, [Validators.required]],
@@ -33,6 +35,7 @@ export class CreateComponent implements OnInit {
     this.customerService.createCustomer(this.custCreateForm.value).subscribe(res => {
       this.loading = false
       this.router.navigate(['/customer'])
+      this.toastrService.success('Customer Created')
     }, err => {
       this.loading =false
     })

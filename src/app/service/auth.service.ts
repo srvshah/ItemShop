@@ -26,6 +26,14 @@ export class AuthService {
   saveToken(token){
     localStorage.setItem('token',token)
   }
+  
+  saveUsername(username){
+    localStorage.setItem('username',username)
+
+  }
+  getUsername(){
+    return localStorage.getItem('username')
+  }
   getToken(){
     return localStorage.getItem('token')
   }
@@ -39,6 +47,9 @@ export class AuthService {
 
   removeToken(){
     localStorage.removeItem('token')
+  }
+  removeUsername(){
+    localStorage.removeItem('username')
   }
 
 }

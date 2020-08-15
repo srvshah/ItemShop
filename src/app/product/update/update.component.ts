@@ -4,6 +4,7 @@ import { ProductModel } from '../models/product';
 import { map, mergeMap } from 'rxjs/operators'
 import { ProductService } from '../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update',
@@ -18,7 +19,8 @@ export class UpdateComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {
     this.prodUpdateForm = this.fb.group({
       'name': '',
@@ -54,6 +56,7 @@ export class UpdateComponent implements OnInit {
     this.productService.updateProduct(id, this.prodUpdateForm.value).subscribe(res=>{
       this.router.navigate(['/product'])
       this.loading = false
+      this.toastrService.success('Product Updated')
     }, err => {
       this.loading = false
     })

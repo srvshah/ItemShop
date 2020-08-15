@@ -7,11 +7,12 @@ import { CustomerService } from './customer.service'
 import { CustomerRoutingModule } from './customer.routing'
 import { MaterialModule } from '../core/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustTransactionComponent } from './cust-transaction/cust-transaction.component';
 
 
 
 @NgModule({
-  declarations: [CreateComponent, ListComponent, UpdateComponent],
+  declarations: [CreateComponent, ListComponent, UpdateComponent, CustTransactionComponent],
   imports: [
     CommonModule,
     MaterialModule,

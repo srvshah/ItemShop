@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CustomerModel } from './models/customer';
 import { environment } from 'src/environments/environment';
+import { TransactionModel } from '../transaction/models/transaction';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,9 @@ export class CustomerService {
   updateCustomer(id, data){
     data['gender'] = Number(data.gender)
     return this.http.put(this.customerUrl+ '/' + id, data)
+  }
+
+  transactions(id): Observable<TransactionModel[]>{
+    return this.http.get<TransactionModel[]>(`${this.customerUrl}/${id}/transactions`)
   }
 }

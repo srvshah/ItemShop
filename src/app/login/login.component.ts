@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
     this.loading = true
     this.authService.login(this.loginForm.value).subscribe(res => {
       this.authService.saveToken(res['token'])
+      this.authService.saveUsername(res['username'])
       this.app.ngOnInit()
       this.loading = false 
       this.router.navigate(['dashboard'])

@@ -2,9 +2,25 @@
   <mat-sidenav-container fullscreen>
     <mat-sidenav #drawer mode="side" opened role="navigation">
       <mat-nav-list *ngIf="isAuthenticated">
-        <a mat-list-item routerLink='/dashboard'>Dashboard</a>
-        <a mat-list-item routerLink='/product'>Product</a>
-        <a mat-list-item routerLink='/customer'>Customer</a>
+        <a mat-list-item routerLink='/dashboard'>
+          <mat-icon matListIcon>dashboard</mat-icon>
+          Dashboard</a>
+        <a mat-list-item routerLink='/product'>
+          <mat-icon matListIcon>shopping_cart</mat-icon>
+          Product
+        </a>
+        <a mat-list-item routerLink='/customer'>
+          <mat-icon matListIcon>people</mat-icon> 
+          Customer
+        </a>
+        <a mat-list-item routerLink='/transaction'>
+          <mat-icon matListIcon>compare_arrows</mat-icon>
+          Transaction
+        </a>
+        <a mat-list-item routerLink='/invoice'>
+          <mat-icon matListIcon>description</mat-icon>
+          Invoice
+        </a>
       </mat-nav-list>
       <mat-nav-list  *ngIf="!isAuthenticated">
         <a mat-list-item routerLink='/login'>login</a>

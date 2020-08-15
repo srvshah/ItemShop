@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Generate Invoice</h1>
+<p>Note: Only those transactions with status "complete" and will be invoiced.</p>
+<div mat-dialog-content>
+    <form [formGroup]="invoiceCreateForm">
+        <mat-form-field class="container-fluid">
+            <mat-label>Customer</mat-label>
+            <mat-select formControlName="customerId">
+                <mat-option *ngFor="let c of customers" [value]="c.value">
+                {{c.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+
+<div mat-dialog-actions>
+    <button  (click)="onNoClick()"  mat-button>Close</button>
+    <button 
+        [mat-dialog-close]="true"
+        color="primary"
+        mat-raised-button (click)="generate()" 
+        [disabled]="!invoiceCreateForm.valid || loading">
+            <mat-spinner
+                class="float-left mr-2"
+                *ngIf="loading"
+                [diameter]="25">
+            </mat-spinner>
+        Generate
+    </button>
+
+</div>

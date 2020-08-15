@@ -14,6 +14,9 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {CoreModule} from './core/core.module'
 import { AuthGuardService } from './service/auth-guard.service';
+import { ToastrModule } from 'ngx-toastr';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,8 @@ import { AuthGuardService } from './service/auth-guard.service';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
+    InvoiceComponent,
+    ConfirmationComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +35,8 @@ import { AuthGuardService } from './service/auth-guard.service';
     MaterialModule,
     ReactiveFormsModule,
     CoreModule,
-    HttpClientModule
+    ToastrModule.forRoot(),
+    HttpClientModule,
   ],
   providers: [
     AuthService,
